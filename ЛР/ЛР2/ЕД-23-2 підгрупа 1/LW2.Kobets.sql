@@ -1,0 +1,48 @@
+USE [WebStor];
+
+GO
+CREATE SCHEMA KobetsNK; 
+GO
+
+CREATE TABLE KobetsNK.DATATYPES (
+
+ID BIGINT,
+
+AGE TINYINT
+
+);
+
+INSERT INTO KobetsNK.DATATYPES(ID, AGE)
+
+VALUES(10000, 34);
+
+INSERT INTO KobetsNK.DATATYPES(ID, AGE)
+
+VALUES(10001, 32);
+
+-- Implicit data type conversion
+
+INSERT INTO KobetsNK.DATATYPES(ID, AGE)
+
+VALUES('10002', 32);
+
+-- Implicit data type conversion
+
+INSERT INTO KobetsNK.DATATYPES(ID, AGE)
+
+VALUES('10003', '35');
+
+-- Implicit data type conversion
+
+INSERT INTO KobetsNK.DATATYPES(ID, AGE)
+
+VALUES('19700101', '35');
+
+-- Implicit data type conversion IS NOT WORKING!
+
+INSERT INTO KobetsNK.DATATYPES(ID, AGE)
+
+VALUES('19700102', '35');
+
+SELECT *
+FROM KobetsNK.DATATYPES;
