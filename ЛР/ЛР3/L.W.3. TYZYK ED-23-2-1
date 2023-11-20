@@ -1,0 +1,59 @@
+CREATE DATABASE STUDENTS; /*NСтворення бази даних "STUDENTS"*/
+
+USE STUDENTS; /*NПерехід до бази даних "STUDENTS"*/
+
+CREATE TABLE PersonalInfo ( /*NСтворення таблиці "PersonalInfo"*/
+StudentID INT PRIMARY KEY, 
+FirstName NVARCHAR(50),
+LastName NVARCHAR(50)
+DateOfBirth DATE
+);
+
+CREATE TABLE AcademicInfo ( /*NСтворення таблиці "AcademicInfo"*/
+RecordID INT PRIMARY KEY,
+StudentID INT FOREIGN KEY REFERENCES PersonalInfo(StudentID),
+Faculty NVARCHAR(100),
+Curator NVARCHAR(100),
+EnrollmentYear INT
+);
+
+CREATE TABLE ContactInfo ( /*NСтворення таблиці "ContactInfo"*/
+ContactID INT PRIMARY KEY,
+StudentID INT FOREIGN KEY REFERENCES PersonalInfo(StudentID),
+Email NVARCHAR(100),
+PhoneNumber NVARCHAR(15)
+);
+
+ALTER TABLE ContactInfo ADD Address NVARCHAR(200);/*NДодаємо в таблицю "ContactInfo" стовпець "Address"*/
+
+ALTER TABLE ContactInfo DROP COLUMN PhoneNumber; /*NЗ таблиці "ContactInfo" видаляємо стовпець "PhoneNumber"*/
+
+EXEC sp_rename 'ContactInfo.Email', 'EmailAddress', 'COLUMN'; /*NУ таблиці "ContactInfo" змінюємо ім'я стовпця "Email" на "EmailAddress"*/
+
+ALTER TABLE AcademicInfo           /*NУ таблиці "AcademicInfo" змінюємо тип даних стовпця "Faculty"*/
+ALTER COLUMN Faculty NVARCHAR(150)
+
+CREATE TABLE Extracurricular ( /*NДодаємо таблицю "Extracurricular"*/
+ActivityID INT PRIMARY KEY,
+StudentID INT FOREIGN KEY REFERENCES PersonalInfo(StudentID),
+ActivityName NVARCHAR(100),
+JoinDate DATE
+);
+
+DROP TABLE Extracurricular; /*NВидаляємо таблицю "Extracurricular"*/
+
+CREATE DATABASE TEACHER; /*NСтворюємо базу даних "TEACHER"*/
+
+DROP DATABASE TEACHER;/*NВидаляємо базу даних "TEACHER"*/
+
+USE STUDENTS; /*NПереходимо в базу даних "STUDENTS"*/
+
+INSERT INTO PersonalInfo (StudentID, FirstName, LastName, DateOfBirth) /*NДодаємо до таблиці "PersonalInfo" три рядки*/
+
+VALUES
+
+(1, N'Олександр', N'Петров', '2000-05-15'),
+
+(2, N'Марія', N'Іваненко', '2001-03-22'),
+
+(3, N'Василь', N'Коваленко', '1999-10-10');
