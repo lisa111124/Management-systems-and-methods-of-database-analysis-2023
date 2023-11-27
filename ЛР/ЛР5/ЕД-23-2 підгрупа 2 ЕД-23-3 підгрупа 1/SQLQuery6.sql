@@ -1,0 +1,1 @@
+ALTER TABLE Professors ADD CONSTRAINT UQ_Professor_Email UNIQUE (Email);
