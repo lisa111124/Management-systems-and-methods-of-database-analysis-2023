@@ -1,4 +1,16 @@
-﻿/* Створюємо базу даних*/CREATE DATABASE STUDENTSS;USE STUDENTSS;/* Створюємо таблицю PersonalInfo*/CREATE TABLE PersonalInfo (
+﻿/* 
+Створюємо базу даних
+*/
+
+CREATE DATABASE STUDENTSS;
+
+USE STUDENTSS;
+
+/* 
+Створюємо таблицю PersonalInfo
+*/
+
+CREATE TABLE PersonalInfo (
  StudentID INT PRIMARY KEY,
  FirstName NVARCHAR(50),
  LastName NVARCHAR(50),
@@ -18,12 +30,32 @@
  StudentID INT FOREIGN KEY REFERENCES PersonalInfo(StudentID),
  Email NVARCHAR(100),
  PhoneNumber NVARCHAR(15)
- );
- /* Змінюємо таблицю ContactInfo*/ALTER TABLE ContactInfo ADD Address NVARCHAR(200); ALTER TABLE ContactInfo DROP COLUMN PhoneNumber; EXEC sp_rename 'ContactInfo.Email', 'EmailAddress', 'COLUMN'; /* Змінюємо тип даних стовбця*/ALTER TABLE AcademicInfo
+ );
+
+ 
+/* 
+Змінюємо таблицю ContactInfo
+*/
+
+ALTER TABLE ContactInfo ADD Address NVARCHAR(200);
+
+ ALTER TABLE ContactInfo DROP COLUMN PhoneNumber;
+
+ EXEC sp_rename 'ContactInfo.Email', 'EmailAddress', 'COLUMN';
+
+
+ /* 
+Змінюємо тип даних стовбця
+*/
+
+ALTER TABLE AcademicInfo
  ALTER COLUMN Faculty NVARCHAR(150);
 
 
- /* Додаємо таблицю */
+ /* 
+Додаємо таблицю 
+*/
+
 
  CREATE TABLE Extracurricular (
  ActivityID INT PRIMARY KEY,
@@ -32,7 +64,30 @@
  JoinDate DATE
  );
 
- /* Видаляємо таблицю */DROP TABLE Extracurricular;/* Створюємо базу даних*/CREATE DATABASE TEACHER; DROP DATABASE TEACHER; /*  Переключаемось на іншу базу даних*/ USE STUDENTSS; INSERT INTO PersonalInfo (StudentID, FirstName, LastName, DateOfBirth)
+
+ /* 
+Видаляємо таблицю 
+*/
+
+DROP TABLE Extracurricular;
+
+
+
+/* 
+Створюємо базу даних
+*/
+
+CREATE DATABASE TEACHER;
+
+ DROP DATABASE TEACHER;
+
+ /* 
+ Переключаемось на іншу базу даних
+*/
+
+ USE STUDENTSS;
+
+ INSERT INTO PersonalInfo (StudentID, FirstName, LastName, DateOfBirth)
 VALUES
  (1, 'Олександр', 'Петров', '2000-05-15'),
  (2, 'Марія', 'Іваненко', '2001-03-22'),
