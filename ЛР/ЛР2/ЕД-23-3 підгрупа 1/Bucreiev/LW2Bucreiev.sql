@@ -1,0 +1,61 @@
+﻿CREATE DATABASE Bucreiev;
+
+
+
+
+USE Bucreiev; 
+
+GO 
+
+CREATE SCHEMA Bucreiev;  
+
+GO 
+
+CREATE TABLE Bucreiev.DATATYPES ( 
+
+       ID  BIGINT,
+
+   AGE TINYINT); 
+
+
+INSERT INTO Bucreiev.DATATYPES(ID, AGE) 
+
+VALUES(10000, 34); 
+
+ 
+
+INSERT INTO Bucreiev.DATATYPES(ID, AGE) 
+
+VALUES(10001, 32); 
+
+ 
+
+INSERT INTO Bucreiev.DATATYPES(ID, AGE) 
+
+VALUES('10002', 32); 
+
+
+
+INSERT INTO Bucreiev.DATATYPES(ID, AGE) 
+
+VALUES('10003', '35'); 
+
+ 
+
+
+INSERT INTO Bucreiev.DATATYPES(ID, AGE) 
+
+VALUES('19700101', '35'); 
+
+ 
+
+-- Implicit data type conversion IS NOT WORKING! 
+
+INSERT INTO Bucreiev.DATATYPES(ID, AGE) 
+
+VALUES('19700101', '35'); 
+
+
+SELECT *  
+
+  FROM Bucreiev.DATATYPES; 
